@@ -9,7 +9,7 @@ function App() {
   return (
     <main className="min-h-screen bg-slate-100 p-8">
       <h1 className="mb-8 text-2xl font-bold text-slate-900">React dashboard</h1>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <Stopwatch />
         <ConnectionStatus />
         <WindowSize />

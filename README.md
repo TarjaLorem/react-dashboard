@@ -77,10 +77,12 @@ A `🟢 Online` / `🔴 Offline` indicator that updates automatically.
 
 Live `width × height` of the window, updating on resize.
 
-- One effect adds a `resize` listener and removes it on cleanup — that's the
-  whole lifecycle.
-- The initial value comes from the `useState` initializer, so the first render
-  is already correct.
+- No effect: `useSyncExternalStore` subscribes to the `resize` event and reads
+  the size during render via `getSnapshot` (same pattern as Connection status).
+- `getSnapshot` returns a string (`"1024x768"`) so React can compare snapshots
+  by value; the two numbers are split back out during render.
+- The `subscribe` function returns its own cleanup, so the listener is removed
+  on unmount.
 - No manual throttle: the browser already fires `resize` at roughly one event
   per frame.
 
